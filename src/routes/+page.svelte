@@ -1,27 +1,12 @@
 
 
 <script>
-	import { TabGroup } from '@skeletonlabs/skeleton';
+	import { TabGroup, Tab, TabAnchor } from '@skeletonlabs/skeleton';
 	import { page } from '$app/stores';
 
 </script>
 
 
-
-
-
-
-
-<TabGroup>
-	<TabAnchor href="/">
-		<svelte:fragment slot="lead">(icon)</svelte:fragment>
-		<span>(label)</span>
-	</TabAnchor>
-	<TabAnchor href="/about">(label)</TabAnchor>
-	<!-- ... -->
-</TabGroup>
-					
-					
 
 <!-- YOU CAN DELETE EVERYTHING IN THIS PAGE -->
 
@@ -29,6 +14,19 @@
 	<div class="space-y-5">
 		<h1 class="h1">Let's get cracking bones!</h1>
 		<p>Start by exploring:</p>
+		
+		<TabGroup>
+			<TabAnchor href="/">
+				<svelte:fragment slot="lead">(icon)</svelte:fragment>
+				<span>(Limit Buy)</span>
+			</TabAnchor>
+			<TabAnchor href="/about">
+				<svelte:fragment slot="lead">(icon)</svelte:fragment>
+				<span>(Market Sell)</span>
+			</TabAnchor>
+			<!-- ... -->
+		</TabGroup>
+		
 		<ul>
 			<li><code class="code">/src/routes/+layout.svelte</code> - barebones layout</li>
 			<li><code class="code">/src/app.postcss</code> - app wide css</li>
