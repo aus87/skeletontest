@@ -1,6 +1,9 @@
 <script lang="ts">
 	import { TabGroup, Tab } from '@skeletonlabs/skeleton';
 	import { writable } from 'svelte/store';
+	import Button from "$lib/components/Button.svelte";
+	// import DevModeSteps from "./DevModeSteps.svelte";
+  import HelloToken from "./HelloToken.svelte";
 
 	let tabSet: number = 0;
 
@@ -88,6 +91,32 @@
 	<div></div>
 	<div></div>
 	<div></div>
+
+	<section>
+		<h1>Dev Mode Setup <br />in a Few Steps</h1>
+		<p>Before connecting your wallet please follow the steps below.</p>
+	  </section>
+
+	  <section>
+		<h2>Get Your Hello Token</h2>
+		<p>
+		  Claim your <span class="hello-token-pink">Hello Token</span>
+		</p>
+	  </section>
+	  <HelloToken />
+	  <section>
+		<h2>Explore further Documentation</h2>
+		<p class="semi-bold">
+		  Find additional resources and detailed guides to help you navigate the setup
+		  process
+		</p>
+		<div class="docs-button-container">
+		  <Button href="https://docs.radixdlt.com/docs">View Radix Docs</Button>
+		  <Button
+			href="https://www.npmjs.com/package/@radixdlt/radix-dapp-toolkit"
+			--background="var(--grey-3)">View dApp Toolkit</Button>
+		</div>
+	  </section>
 </div>
 
 
