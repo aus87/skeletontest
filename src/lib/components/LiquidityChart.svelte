@@ -1,31 +1,15 @@
 <script lang="ts">
-    import { onMount } from 'svelte';
-    import { Chart, BarController, BarElement, CategoryScale, LinearScale, Title, Tooltip } from 'chart.js';
+    import { Bar } from 'svelte-chartjs';
+    import { Chart, BarController, BarElement, CategoryScale, LinearScale, Title, Tooltip, Legend } from 'chart.js';
+    import { data } from './liquiditydata.js'; // Import the data from liquiditydata.js
   
-    let canvas: HTMLCanvasElement;
-    let chart: Chart;
+    Chart.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale);
   
-    export let data;
-    export let options;
-  
-    onMount(() => {
-      Chart.register(BarController, BarElement, CategoryScale, LinearScale, Title, Tooltip);
-  
-      const config = {
-        type: 'bar',
-        data,
-        options
-      };
-  
-      if (canvas) {
-        chart = new Chart(canvas, config);
-      }
-  
-      return () => {
-        if (chart) chart.destroy();
-      };
-    });
+    export let options: any;
   </script>
   
-  <canvas bind:this={canvas} style="width: 100%; height: 600px;"></canvas>
+  <Bar {data} {options} style="width: 100%; height: 600px;" />
+  
+  
+  
   

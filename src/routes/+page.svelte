@@ -14,43 +14,49 @@
 	// Dummy LSU tokens for now
 	let accountLSUs: string[] = ['LSU1', 'LSU2', 'LSU3'];
   
-	// Generate fake data
-	const generateFakeData = () => {
-	  const data = [];
-	  const labels = [];
-	  for (let i = 0; i <= 100; i++) {
-		const percentage = (i * 0.05).toFixed(2);
-		labels.push(`${percentage}%`);
-		data.push(Math.floor(Math.random() * 1000));
-	  }
-	  return { labels, data };
-	};
-  
-	const { labels, data } = generateFakeData();
-  
-	const chartData = {
-	  labels,
-	  datasets: [
-		{
-		  label: 'XRD Liquidity',
-		  backgroundColor: 'rgba(54, 162, 235, 0.2)',
-		  borderColor: 'rgba(54, 162, 235, 1)',
-		  data,
-		},
-	  ],
-	};
-  
 	const chartOptions = {
 	  responsive: true,
 	  maintainAspectRatio: false,
 	  scales: {
 		x: {
 		  beginAtZero: true,
+		  title: {
+			display: true,
+			text: 'Discount Percentage',
+			color: 'white',
+		  },
+		  ticks: {
+			color: 'white',
+			callback: function (value: number, index: number) {
+			  // Display only every fifth label
+			  return index % 5 === 0 ? `${(value * 0.05).toFixed(2)}%` : '';
+			}
+		  }
 		},
 		y: {
 		  beginAtZero: true,
-		},
+		  title: {
+			display: true,
+			text: 'XRD',
+			color: 'white',
+		  },
+		  ticks: {
+			color: 'white'
+		  }
+		}
 	  },
+	  plugins: {
+		legend: {
+		  labels: {
+			color: 'white'
+		  }
+		},
+		tooltip: {
+		  titleColor: 'white',
+		  bodyColor: 'white',
+		  footerColor: 'white'
+		}
+	  }
 	};
   </script>
   
@@ -105,10 +111,15 @@
 	<!-- Liquidity Chart -->
 	<div class="w-full max-w-full mx-auto mt-5 px-4">
 	  <div class="border border-gray-300 rounded-lg shadow-md p-4 w-full">
-		<LiquidityChart {data} options={chartOptions} />
+		<LiquidityChart options={chartOptions} />
 	  </div>
 	</div>
   </div>
+  
+  
+  
+  
+  
   
   
   
