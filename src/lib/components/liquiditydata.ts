@@ -1,26 +1,23 @@
+function generateBellCurveData(mean: number, stdDev: number) {
+  const data = [];
+  for (let i = 0; i <= 100; i++) {
+    const percentage = i * 0.05;
+    const value = Math.exp(-0.5 * Math.pow((percentage - mean) / stdDev, 2)) * 1000; // Bell curve formula
+    data.push(Math.round(value));
+  }
+  return data;
+}
+
 export const data = {
-  labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+  labels: Array.from({ length: 101 }, (_, i) => (i * 0.05).toFixed(2) + '%'),
   datasets: [
     {
-      label: '% of Votes',
-      data: [12, 19, 3, 5, 2, 3],
-      backgroundColor: [
-        'rgba(255, 134,159,0.4)',
-        'rgba(98,  182, 239,0.4)',
-        'rgba(255, 218, 128,0.4)',
-        'rgba(113, 205, 205,0.4)',
-        'rgba(170, 128, 252,0.4)',
-        'rgba(255, 177, 101,0.4)',
-      ],
-      borderWidth: 2,
-      borderColor: [
-        'rgba(255, 134, 159, 1)',
-        'rgba(98,  182, 239, 1)',
-        'rgba(255, 218, 128, 1)',
-        'rgba(113, 205, 205, 1)',
-        'rgba(170, 128, 252, 1)',
-        'rgba(255, 177, 101, 1)',
-      ],
+      label: 'XRD Liquidity',
+      data: generateBellCurveData(0.6, 0.3), // mean = 0.6%, stdDev = 0.3%
+      backgroundColor: 'rgba(54, 162, 235, 0.2)',
+      borderColor: 'rgba(54, 162, 235, 1)',
+      borderWidth: 1,
     },
   ],
 };
+
