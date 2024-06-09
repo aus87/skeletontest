@@ -67,12 +67,12 @@
 	  width: 100%;
 	}
 	.spacer {
-	  padding-top: 2rem; /* Adjust the padding as needed */
+	  padding-top: 1rem; /* Reduced the padding */
 	}
 	.chart-container {
-	  width: calc(100% - 4rem); /* Adjusted width with padding */
+	  width: calc(100% - 2rem); /* Adjusted width with padding */
 	  height: 800px; /* Increased height */
-	  margin: 2rem auto 0 auto; /* Added margin to move it closer */
+	  margin-top: 1rem; /* Reduced margin */
 	  padding: 1rem; /* Added padding */
 	}
   </style>
@@ -84,7 +84,7 @@
 	<div></div>
   
 	<!-- Centered Tab Group and Content in the middle column of the top row -->
-	<div class="flex flex-col items-center justify-center space-y-5 col-span-1 row-span-1">
+	<div class="flex flex-col items-center justify-center space-y-3 col-span-1 row-span-1">
 	  <TabGroup bind:value={tabSet}>
 		<Tab bind:group={tabSet} name="tab1" value={0}>
 		  <span>Limit Buy</span>
@@ -96,7 +96,7 @@
   
 	  <div class="content-container">
 		{#if tabSet === 0}
-		  <div class="space-y-5">
+		  <div class="space-y-3">
 			<div>
 			  <label for="xrd-amount">XRD Amount</label>
 			  <input type="range" id="xrd-amount" min="0" max="10000" bind:value={$xrdAmount} class="slider" />
@@ -110,7 +110,7 @@
 			</div>
 		  </div>
 		{:else if tabSet === 1}
-		  <div class="space-y-5">
+		  <div class="space-y-3">
 			<div>
 			  <label for="lsu-token">LSU Token</label>
 			  <select id="lsu-token" bind:value={$selectedLSU} class="w-full">
@@ -140,6 +140,7 @@
 	  </div>
 	</div>
   </div>
+  
   
   
   
