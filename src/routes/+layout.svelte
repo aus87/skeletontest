@@ -12,6 +12,7 @@
 	import { gatewayApi, rdt, walletData } from "$lib/stores";
 	import { dAppDefinitionAddress } from "$lib/constants";
 	import { AppBar } from '@skeletonlabs/skeleton';
+	import Button from "$lib/components/Button.svelte";
 
 	onMount(() => {
 		// Initialize the Gateway API for network queries and the Radix Dapp Toolkit for connect button and wallet usage.
@@ -47,9 +48,11 @@
 	</svelte:fragment>
 	Liquify
 	<svelte:fragment slot="trail">
+
 		<radix-connect-button />
 	</svelte:fragment>
 </AppBar>
+
 <main>
 	<slot />
   </main>
@@ -58,25 +61,5 @@
 
   
   <style>
-	main {
-	  display: flex;
-	  flex-direction: column;
-	  align-items: center;
-	  gap: 5rem;
-	  padding: 5rem 1rem;
-	}
-
-	.connect-btn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    --radix-connect-button-width: 11.25rem;
-    --radix-connect-button-height: 2.875rem;
-    --radix-connect-button-border-radius: 0.5rem;
-  }
-  @media (max-width: 384px) {
-    .connect-btn {
-      --radix-connect-button-width: 100px;
-    }
-  }
+	/*  */
   </style>
