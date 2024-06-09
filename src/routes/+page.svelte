@@ -54,92 +54,69 @@
 	};
   </script>
   
-  <style>
-	.content-container {
-	  max-width: 1200px; /* Double the width */
-	  margin: auto;
-	  padding: 2rem;
-	  border: 1px solid #ddd;
-	  border-radius: 8px;
-	  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-	}
-	.slider {
-	  width: 100%;
-	}
-	.spacer {
-	  padding-top: 1rem; /* Reduced the padding */
-	}
-	.chart-container {
-	  width: calc(100% - 2rem); /* Adjusted width with padding */
-	  height: 800px; /* Increased height */
-	  margin-top: 1rem; /* Reduced margin */
-	  padding: 1rem; /* Added padding */
-	}
-  </style>
+  <div class="pt-4"></div>
   
-  <div class="spacer"></div>
+  <!-- Centered Tab Group and Content -->
+  <div class="flex flex-col items-center justify-center space-y-3 w-full max-w-4xl mx-auto px-4">
+	<TabGroup bind:value={tabSet}>
+	  <Tab bind:group={tabSet} name="tab1" value={0}>
+		<span>Limit Buy</span>
+	  </Tab>
+	  <Tab bind:group={tabSet} name="tab2" value={1}>
+		<span>Market Sell</span>
+	  </Tab>
+	</TabGroup>
   
-  <div class="grid grid-cols-3 grid-rows-2 min-h-screen">
-	<!-- Empty cells to create 2 rows and 3 columns layout -->
-	<div></div>
-  
-	<!-- Centered Tab Group and Content in the middle column of the top row -->
-	<div class="flex flex-col items-center justify-center space-y-3 col-span-1 row-span-1">
-	  <TabGroup bind:value={tabSet}>
-		<Tab bind:group={tabSet} name="tab1" value={0}>
-		  <span>Limit Buy</span>
-		</Tab>
-		<Tab bind:group={tabSet} name="tab2" value={1}>
-		  <span>Market Sell</span>
-		</Tab>
-	  </TabGroup>
-  
-	  <div class="content-container">
-		{#if tabSet === 0}
-		  <div class="space-y-3">
-			<div>
-			  <label for="xrd-amount">XRD Amount</label>
-			  <input type="range" id="xrd-amount" min="0" max="10000" bind:value={$xrdAmount} class="slider" />
-			  <span>{$xrdAmount} XRD</span>
-			</div>
-  
-			<div>
-			  <label for="discount">Discount Percentage</label>
-			  <input type="range" id="discount" min="0" max="5" step="0.05" bind:value={$discount} class="slider" />
-			  <span>{$discount} %</span>
-			</div>
+	<div class="w-full p-5 border-2 border-gray-300 rounded-lg shadow-md">
+	  {#if tabSet === 0}
+		<div class="space-y-3">
+		  <div>
+			<label for="xrd-amount">XRD Amount</label>
+			<input type="range" id="xrd-amount" min="0" max="10000" bind:value={$xrdAmount} class="w-full" />
+			<span>{$xrdAmount} XRD</span>
 		  </div>
-		{:else if tabSet === 1}
-		  <div class="space-y-3">
-			<div>
-			  <label for="lsu-token">LSU Token</label>
-			  <select id="lsu-token" bind:value={$selectedLSU} class="w-full">
-				{#each accountLSUs as lsu}
-				  <option value={lsu}>{lsu}</option>
-				{/each}
-			  </select>
-			</div>
   
-			<div>
-			  <label for="lsu-percentage">LSU Percentage</label>
-			  <input type="range" id="lsu-percentage" min="0" max="100" bind:value={$lsuPercentage} class="slider" />
-			  <span>{$lsuPercentage} %</span>
-			</div>
+		  <div>
+			<label for="discount">Discount Percentage</label>
+			<input type="range" id="discount" min="0" max="5" step="0.05" bind:value={$discount} class="w-full" />
+			<span>{$discount} %</span>
 		  </div>
-		{/if}
-	  </div>
+		</div>
+	  {:else if tabSet === 1}
+		<div class="space-y-3">
+		  <div>
+			<label for="lsu-token">LSU Token</label>
+			<select id="lsu-token" bind:value={$selectedLSU} class="w-full">
+			  {#each accountLSUs as lsu}
+				<option value={lsu}>{lsu}</option>
+			  {/each}
+			</select>
+		  </div>
+  
+		  <div>
+			<label for="lsu-percentage">LSU Percentage</label>
+			<input type="range" id="lsu-percentage" min="0" max="100" bind:value={$lsuPercentage} class="w-full" />
+			<span>{$lsuPercentage} %</span>
+		  </div>
+		</div>
+	  {/if}
 	</div>
-	<div></div>
   
-	<!-- Bottom row spanning the entire width of the screen -->
-	<div class="col-span-3 row-span-1 chart-container">
-	  <div class="content-container" style="max-width: 100%; padding: 0; border: none; box-shadow: none;">
-		<!-- Placeholder for the liquidity bar chart -->
-		<h2>Liquidity Bar Chart</h2>
+	<!-- Liquidity Chart -->
+	<div class="w-full max-w-full mx-auto mt-5 px-4">
+	  <div class="border border-gray-300 rounded-lg shadow-md p-4 w-full">
 		<LiquidityChart {data} options={chartOptions} />
 	  </div>
 	</div>
   </div>
+  
+  
+  
+  
+  
+
+  
+  
   
   
   

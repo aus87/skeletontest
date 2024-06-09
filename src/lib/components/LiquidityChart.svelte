@@ -1,14 +1,31 @@
 <script lang="ts">
-    import { Line } from 'svelte-chartjs';
-    import { Chart, registerables } from 'chart.js';
-    Chart.register(...registerables);
+    import { onMount } from 'svelte';
+    import { Chart, BarController, BarElement, CategoryScale, LinearScale, Title, Tooltip } from 'chart.js';
   
-    export let data: any;
-    export let options: any;
+    let canvas: HTMLCanvasElement;
+    let chart: Chart;
+  
+    export let data;
+    export let options;
+  
+    onMount(() => {
+      Chart.register(BarController, BarElement, CategoryScale, LinearScale, Title, Tooltip);
+  
+      const config = {
+        type: 'bar',
+        data,
+        options
+      };
+  
+      if (canvas) {
+        chart = new Chart(canvas, config);
+      }
+  
+      return () => {
+        if (chart) chart.destroy();
+      };
+    });
   </script>
   
-  <div style="width: 100%; height: 100%;">
-    <Line {data} {options} />
-  </div>
+  <canvas bind:this={canvas} style="width: 100%; height: 600px;"></canvas>
   
-
