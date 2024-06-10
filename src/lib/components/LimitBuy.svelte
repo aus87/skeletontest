@@ -18,7 +18,9 @@
         <input type="range" id="discount" min="0" max="5" step="0.05" bind:value={$discount} class="w-full" />
         <span class="chip variant-filled">{$discount} %</span>
       </div>
-      <button type="button" class="btn-xl variant-filled-tertiary w-full">Place Buy Order</button>
+      <div class="flex justify-center">
+        <button type="button" class="btn-xl variant-filled-tertiary w-1/2 rounded-full">Place Buy Order</button>
+      </div>
     </div>
   </div>
   
