@@ -52,7 +52,7 @@
 	};
   </script>
   
-  <div class="bg-gradient-to-r from-blue-500 to-purple-500 min-h-screen">
+  <div class="bg-gradient-to-r from-blue-800 via-blue-600 to-purple-800 min-h-screen">
   
 	<div class="pt-4"></div>
   
@@ -83,6 +83,7 @@
 	  </div>
 	</div>
   </div>
+  
   
   
   
